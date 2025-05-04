@@ -1,0 +1,10 @@
+requests==2.31.0
+beautifulsoup4==4.12.3
+newspaper3k==0.2.8
+python-dotenv==1.0.0
+sqlalchemy==2.0.19
+schedule==1.2.0
+flask==2.3.2
+python-slugify==8.0.4
+kaggle==1.6.12
+openai==1.2.4

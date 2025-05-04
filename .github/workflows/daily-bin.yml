@@ -1,0 +1,38 @@
+name: Daily Bin Pipeline
+
+on:
+  schedule:
+    # Run every day at 06:00 UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Run pipeline that scrapes, summarises, renders & writes to site/
+      - name: Run pipeline script
+        run: python -m src.pipeline
+
+      # Commit any new files (images, html) back to repo
+      - name: Commit and push if changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'docs: update'
+          add: '*'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
