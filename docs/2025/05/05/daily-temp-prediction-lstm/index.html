@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Headline: Seven Days to Tomorrow: How a Humble LSTM Turned a Week of Temperatures into a Weather Predictor - The Daily Bin</title>
+    <title>Headline: “Seven Days to Tomorrow: How a Petite LSTM Model Nailed Daily Temperature Forecasts” - The Daily Bin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
@@ -21,18 +21,18 @@
 <body>
 <header>
     <a class="home" href="/">← Back to front page</a>
-    <h1>Headline: Seven Days to Tomorrow: How a Humble LSTM Turned a Week of Temperatures into a Weather Predictor</h1>
+    <h1>Headline: “Seven Days to Tomorrow: How a Petite LSTM Model Nailed Daily Temperature Forecasts”</h1>
     <div class="meta">May 05, 2025 &middot; Source: kaggle.com</div>
 </header>
 
 
 <figure>
-    <img src="/2025/05/05/daily-temp-prediction-lstm/cover.png" alt="Headline: Seven Days to Tomorrow: How a Humble LSTM Turned a Week of Temperatures into a Weather Predictor">
+    <img src="2025/05/05/daily-temp-prediction-lstm/cover.png" alt="Headline: “Seven Days to Tomorrow: How a Petite LSTM Model Nailed Daily Temperature Forecasts”">
 </figure>
 
 
 <div class="content">
-    Headline: Seven Days to Tomorrow: How a Humble LSTM Turned a Week of Temperatures into a Weather Predictor<br><br>In the crowded world of weather forecasting, a recent Kaggle notebook serves as a refreshingly simple case study in time-series modeling. Working with the classic “Daily Minimum Temperatures” dataset, the author demonstrates an end-to-end pipeline—from raw CSV to forecast—in under 50 lines of code.<br><br>Key Strategy: Sliding-Window Feature Engineering  <br>• Raw Series to Supervised Learning  <br>  – No fancy calendar tricks, no exogenous inputs: just yesterday’s temperatures.  <br>  – A 7-day “look-back” window (sequence_length=7) is slid across the time series to produce X (7 days) → y (next day) pairs.  <br>• Scaling for Stability  <br>  – A MinMaxScaler confines values to [0,1], a must when feeding data into neural nets.<br><br>Modeling: A Single-Layer LSTM with a Twist  <br>• Architecture  <br>  – One LSTM layer of 50 units—surprisingly using ReLU activation instead of the more common tanh.  <br>  – A single Dense neuron to output tomorrow’s scaled temperature.  <br>• Training  <br>  – 20 epochs, batch size 16, with an 80/20 train-test split and real-time validation.<br><br>Unusual/Interesting Aspects  <br>• ReLU in an LSTM cell—this choice risks exploding activations yet appears to converge smoothly on this dataset.  <br>• Zero additional features—no rolling averages, no holiday flags—just raw readings.  <br>• Error as “Percentage”  <br>  – After computing RMSE in scaled units (~0.064), multiplying by 100 yields a “percentage error” metric rarely seen in academic forecasts.<br><br>Results and Takeaways  <br>• Final Test MSE: ~0.0041  <br>• Final Test RMSE: ~0.064 (≈6.4% when scaled)  <br>• Visualization juxtaposes actual and predicted daily minima, showing tight alignment through seasonal swings.<br><br>Bottom line: This notebook’s real lesson isn’t that it outperforms state-of-the-art meteorology but that, sometimes, a minimalist approach—7 days of history and a single layered LSTM—can deliver surprisingly accurate, interpretable results. For data scientists seeking a no-frills illustration of sequence-to-one forecasting, it’s a model blueprint that’s as elegant as it is effective.
+    Headline: “Seven Days to Tomorrow: How a Petite LSTM Model Nailed Daily Temperature Forecasts”<br><br>In the ever-evolving world of machine learning, bigger isn’t always better. A recent Kaggle notebook demonstrates that a lean, one-layer Long Short-Term Memory (LSTM) network—fed nothing more exotic than its own seven-day memory—can deliver surprisingly accurate daily temperature forecasts.<br><br>A Seasonal Staple with a Twist  <br>The notebook tackles the classic “Daily Minimum Temperatures” time series (a J. Brownlee dataset spanning roughly a decade of Melbourne readings). Instead of piling on holiday indicators, Fourier terms or sophisticated exogenous variables, the author relies on two clean steps:<br><br>1. MinMax scaling. Temperatures are normalized to [0, 1], taming variance and accelerating convergence.  <br>2. Sliding‐window feature engineering. Each input sample consists of the past seven days’ scaled temperatures; the target is day eight.<br><br>This purely autoregressive approach strips away bells and whistles in favor of raw sequence modeling.<br><br>A Surprisingly Simple LSTM  <br>The heart of the strategy is a Keras Sequential model with:<br><br>• One LSTM layer (50 units) using ReLU activation—a less common choice inside LSTMs, where tanh is the norm.  <br>• A single Dense output node predicting tomorrow’s scaled temperature.  <br>• Adam optimizer and mean squared error loss, trained for just 20 epochs with a modest batch size of 16.<br><br>By eschewing deep stacks or attention mechanisms, the notebook showcases how much predictive power resides in a compact recurrent cell tuned to recent trends.<br><br>Performance and Takeaways  <br>On an 80/20 train-test split, the model achieves an MSE of ~0.0041 (scaled units) and an RMSE of ~0.064, translating to roughly a 6.4 percent error after inverse transforming. A final plot juxtaposes true versus predicted temperatures, revealing tight alignment over hundreds of days.<br><br>Why it matters:  <br>• Parsimony wins. A tiny network, minimal preprocessing and a straightforward supervised framing can rival more elaborate pipelines.  <br>• ReLU in LSTM. Swapping tanh for ReLU inside the cell boosts training speed without sacrificing stability.  <br>• Direct percentage error. Multiplying RMSE by 100 offers a quick, if rough, accuracy gauge.<br><br>In a field often enamored with complexity, this notebook reminds us that simplicity—properly applied—can still deliver state-of-the-art results.
 </div>
 
 <div class="links">

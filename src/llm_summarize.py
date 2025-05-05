@@ -74,7 +74,7 @@ def summarise_notebook(ipynb_path: Path, image_dir: Path = None) -> Dict[str, st
             rel_path = image_path.relative_to(Path.cwd())
             if rel_path.parts[0] == "docs":
                 rel_path = Path(*rel_path.parts[1:])
-            image_url = "/" + rel_path.as_posix()
+            image_url = rel_path.as_posix()
         except Exception as e:
             # Fallback: try URL-based generation if base64 failed or was rejected
             try:
@@ -95,7 +95,7 @@ def summarise_notebook(ipynb_path: Path, image_dir: Path = None) -> Dict[str, st
                     rel_path = image_path.relative_to(Path.cwd())
                     if rel_path.parts[0] == "docs":
                         rel_path = Path(*rel_path.parts[1:])
-                    image_url = "/" + rel_path.as_posix()
+                    image_url = rel_path.as_posix()
                 else:
                     print("[WARN] Failed to download image URL from DALL·E response")
             except Exception as e2:

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Headline: “Data Alchemy: How BMI, Square-Root Tricks and Cross-Terms Supercharge a Triple-Boosted Calorie Predictor”   - The Daily Bin</title>
+    <title>Headline: Calories, Cross-Features and CatBoost: Inside the Unconventional Ensemble That Tops Kaggle - The Daily Bin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
@@ -21,14 +21,18 @@
 <body>
 <header>
     <a class="home" href="/">← Back to front page</a>
-    <h1>Headline: “Data Alchemy: How BMI, Square-Root Tricks and Cross-Terms Supercharge a Triple-Boosted Calorie Predictor”  </h1>
+    <h1>Headline: Calories, Cross-Features and CatBoost: Inside the Unconventional Ensemble That Tops Kaggle</h1>
     <div class="meta">May 05, 2025 &middot; Source: kaggle.com</div>
 </header>
 
 
+<figure>
+    <img src="2025/05/05/ps-s5e5-bmi-cross-features-triple-boosting-blend/cover.png" alt="Headline: Calories, Cross-Features and CatBoost: Inside the Unconventional Ensemble That Tops Kaggle">
+</figure>
+
 
 <div class="content">
-    Headline: “Data Alchemy: How BMI, Square-Root Tricks and Cross-Terms Supercharge a Triple-Boosted Calorie Predictor”  <br><br>In a recent Kaggle notebook, an enterprising data scientist transforms raw human metrics into a calorie-burn oracle by combining aggressive feature engineering with a three-pronged gradient-boosting ensemble. The secret sauce? A systematic expansion of numerical features—squared, square-rooted and pairwise-multiplied—to expose hidden non-linearities, plus a smart log transform of the calorie target to align with the RMSLE evaluation metric.  <br><br>First, the ‘Sex’ column is label-encoded and forced into categorical form so that CatBoost and LightGBM can exploit it directly without one-hot bloat. Then comes the fireworks: each numeric column (Age, Height, Weight, Duration, Heart_Rate, Body_Temp) is adorned with its square and square root, and every possible pair among them (including a freshly calculated BMI) is multiplied to create cross-term features. This brute-force polynomial expansion, unusual in its sheer breadth, attempts to surface every subtle interaction that might matter when the body burns calories under varying durations, intensities and physiologies.  <br><br>On the modeling front, the author defines three high-powered regressors—CatBoostRegressor, XGBRegressor and LGBMRegressor—with tuned settings for learning rate, max depth and early stopping. A 5-fold cross-validation loop yields out-of-fold predictions for reliable RMSLE estimates in each fold, while test-set predictions are averaged across folds to stabilize individual forecasts.  <br><br>Finally, the notebook blends the three models in a weighted average (40% XGBoost, 30% CatBoost, 30% LightGBM), then applies the inverse of the initial log1p transform and clips improbable values. This final ensemble—born of exhaustive feature engineering and thoughtful model diversification—achieves a surprisingly low RMSLE on the hold-out data, demonstrating that sometimes the best way to predict human metabolisms is to throw every polynomial and cross-interaction at the wall and see what sticks.
+    Headline: Calories, Cross-Features and CatBoost: Inside the Unconventional Ensemble That Tops Kaggle<br><br>In a recent Kaggle playground challenge to predict calorie expenditure, one data scientist fused classic health metrics with aggressive feature engineering and a three-way boosting ensemble to punch through the leaderboard. The notebook’s key innovation lies in its marriage of simple transforms—squaring and square-rooting age, height, weight, duration, heart rate and body temperature—with a full set of pairwise “cross” features (including the newly computed BMI). That’s dozens of extra predictors designed to capture subtle non-linear and interaction effects between variables.<br><br>Rather than relying on dimensionality reduction or automated feature selectors, the author leaned into raw feature proliferation. Categorical encoding of “Sex” was handled natively by CatBoost and LightGBM for speed and memory efficiency. The target variable (Calories) was log-transformed (“log1p”) to stabilize high variance and directly optimize for RMSLE. Three gradient-boosting models—CatBoostRegressor, XGBRegressor and LGBMRegressor—were then trained in a 5-fold cross-validation loop with early stopping, tuned learning rates and depth constraints.<br><br>What makes this approach stand out is its simplicity blended with brute-force creativity:  <br>• A massive polynomial feature set (including interaction terms with BMI) that would normally risk overfitting, but is tamed through cross-validation and regularization.  <br>• Exploiting native categorical support in two of the frameworks to squeeze more performance out of a single human-readable column.  <br>• A straightforward weighted blend (40% XGBoost, 30% CatBoost, 30% LightGBM) of out-of-fold predictions, followed by an inverse log transform and clipping to a reasonable range.<br><br>This intentionally over-parameterized, multi-model strategy delivered one of the competition’s top RMSLE scores, proving that in certain data-rich forecasting tasks, an “all-in” feature blow-up combined with a lightweight ensemble can beat more parsimonious or black-box automated pipelines.
 </div>
 
 <div class="links">
