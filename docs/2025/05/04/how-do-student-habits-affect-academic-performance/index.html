@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>How much does a teen’s nightly shut-eye or afternoon scroll time really matter for grades? A recent Kaggle notebook tack - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>How much does a teen’s nightly shut-eye or afternoon scroll time really matter for grades? A recent Kaggle notebook tack</h1>
+    <div class="meta">May 04, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+
+<div class="content">
+    How much does a teen’s nightly shut-eye or afternoon scroll time really matter for grades? A recent Kaggle notebook tackles exactly that question with surprisingly straightforward—but instructive—feature engineering and modeling.<br><br>After loading a 1,000-row dataset of high-schoolers, the author zeroes in on four predictors: daily study hours, sleep hours, social-media hours, and exercise frequency. Rather than roll out dozens of engineered variables or high-flying ensembles, the notebook relies on classic exploratory data analysis—histograms, pairplots and a full correlation heatmap—to vet which behaviors align most with exam scores.<br><br>Surprisingly, study time and sleep show the strongest positive correlations (around 0.45 and 0.30), while social-media use drags modestly negative. Exercise frequency barely budges the needle. Armed with those insights, the author fits a plain-vanilla linear regression, splitting 80/20 into train and test sets with a fixed random state for reproducibility.<br><br>No polynomial features, no log transforms and no cross-validated grid search—just raw predictors. Yet the model still achieves an R² in the 0.40–0.50 range and an RMSE near 8 points on a 100-point scale. In practical terms, adding an extra hour of study or sleep per day predicts a 2–3 point exam bump.<br><br>What’s most interesting isn’t a breakthrough algorithm but the disciplined “less is more” approach: use basic visualization to spotlight the truly informative habits, then stick to a transparent linear model. It’s a masterclass in keeping feature engineering lean while delivering actionable, interpretable results.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/pratiksuchak/how-do-student-habits-affect-academic-performance">Read original article</a> &middot; <a href="https://www.kaggle.com/pratiksuchak/how-do-student-habits-affect-academic-performance">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

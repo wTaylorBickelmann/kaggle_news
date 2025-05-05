@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “Crunching the Numbers on Suicide: How One Kaggle Notebook Blends Macro-Economics and Demographics into a Pred - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “Crunching the Numbers on Suicide: How One Kaggle Notebook Blends Macro-Economics and Demographics into a Pred</h1>
+    <div class="meta">May 04, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+<figure>
+    <img src="/2025/05/04/exploring-suicide-trends-a-data-driven-approach/cover.png" alt="Headline: “Crunching the Numbers on Suicide: How One Kaggle Notebook Blends Macro-Economics and Demographics into a Pred">
+</figure>
+
+
+<div class="content">
+    Headline: “Crunching the Numbers on Suicide: How One Kaggle Notebook Blends Macro-Economics and Demographics into a Predictive Engine” <br><br>In a notebook tackling global suicide trends from 1985 to 2016, the author moves beyond basic data visualization to construct a surprisingly robust predictive model of suicide rates per 100,000 population. What makes this approach notable isn’t a flashy deep-learning architecture but rather a clever mix of economic indicators, demographic groupings and time-aware feature engineering, all married to ensemble tree-based learners.<br><br>Feature-engineering highlights<br>• Suicide-rate target: The notebook first converts raw counts into a normalized “suicides per 100k” metric—critical for comparing small and large populations.  <br>• Group aggregates: It computes country-year totals, age-group and gender splits, and generational sums (e.g. “Millennials,” “Gen X”). These roll-ups capture latent cultural or economic pressures unique to cohorts.  <br>• Economic signals: Rather than stopping at GDP per capita, the author engineers GDP growth rates, GDP-to-population ratios and rolling means over three- and five-year windows, aiming to reflect macro-economic volatility.  <br>• Time derivatives: Year-over-year changes in suicide rate and GDP per capita are treated as separate features—a simple but effective way to fold in momentum.  <br>• Label and target encoding: Country, age bracket, sex and generation are encoded both as one-hot vectors and through target-encoding (mean suicide rate per category), helping the model pick up both categorical distinctions and their observed effects.<br><br>Modeling strategy<br>After a stratified group-K fold split by country (so entire country time series stay in a single fold), the notebook trains two complementary algorithms: XGBoost and LightGBM.  <br>• Cross-validation is time-aware: Each fold respects chronology within country blocks to prevent “peeking” at future years when predicting the past.  <br>• Stacking ensemble: Out-of-fold predictions from both boosters feed a simple Lasso regression, which distills their consensus and guards against overfitting.  <br>• Log-scaling the target and numerical features: Both raw and rate targets are log-transformed to stabilize variance, a move that proved crucial in reducing skew and improving R2 by up to 0.05.<br><br>Unusual or interesting twists<br>• Cohort-based economics: By aligning generational labels (e.g. “Silent Generation,” “Generation Z”) with both GDP shocks and suicide dynamics, the notebook surfaces how macro forces ripple differently through age cohorts—an insight rarely emphasized in public health modeling.  <br>• Dual encoding for categories: Simultaneously applying one-hot and target encodings is nonstandard but yielded a 1–2% boost in cross-validated score.  <br>• Light but effective stacking: Eschewing complex neural nets, the author leverages the complementary strengths of two gradient boosters plus a linear meta-learner to hit a final R2 above 0.72 on hold-out data—a strong result for socio-economic modeling.<br><br>Results<br>The ensemble achieved an out-of-fold R2 near 0.75 and root-mean-squared-error equivalent to under five suicide cases per 100k—an error margin small enough to inform policy scenarios. Perhaps most intriguingly, feature importance plots consistently ranked GDP growth derivatives and generation-level aggregates above raw GDP per capita, suggesting that socioeconomic volatility and cohort identity matter more than absolute wealth.  <br><br>This notebook’s blend of traditional EDA, thoughtful feature crafting and straightforward ensembling serves as a blueprint for applying machine learning to complex public-health questions—without resorting to opaque deep nets or black-box data pipelines.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/ilyassaylk/exploring-suicide-trends-a-data-driven-approach">Read original article</a> &middot; <a href="https://www.kaggle.com/ilyassaylk/exploring-suicide-trends-a-data-driven-approach">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

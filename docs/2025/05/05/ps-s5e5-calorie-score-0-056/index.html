@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “When Two’s Better Than One: How One Kaggle Notebook Multiplied Its Way to a Calorie-Counting Breakthrough” - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “When Two’s Better Than One: How One Kaggle Notebook Multiplied Its Way to a Calorie-Counting Breakthrough”</h1>
+    <div class="meta">May 05, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+<figure>
+    <img src="/2025/05/05/ps-s5e5-calorie-score-0-056/cover.png" alt="Headline: “When Two’s Better Than One: How One Kaggle Notebook Multiplied Its Way to a Calorie-Counting Breakthrough”">
+</figure>
+
+
+<div class="content">
+    Headline: “When Two’s Better Than One: How One Kaggle Notebook Multiplied Its Way to a Calorie-Counting Breakthrough”<br><br>In a recent Kaggle Playground challenge to predict calories burned during workouts, one entrant leaned on a deceptively simple yet unusually aggressive feature-engineering strategy—and topped it off with a three-headed tree-based ensemble. Here’s how they did it:<br><br>1. Target Transformation<br>   • The raw “Calories” distribution was heavily skewed. A standard log1p transform (y = log(1 + Calories)) brought it into near-normal territory, smoothing out outliers and stabilizing variance for downstream regressors.<br><br>2. Pairwise “Cross” Features<br>   • Rather than rely solely on raw inputs—Age, Height, Weight, Duration, Heart Rate, Body Temperature—the author generated all 15 pairwise products (e.g., Age×Weight, Duration×Heart_Rate).  <br>   • Why it’s interesting: Interaction terms are often reserved for linear models. Here, they turbo-charge tree models, letting splits capture complex synergies (for instance, how weight modifies the effect of heart rate on calories).<br><br>3. Categorical Handling<br>   • The only categorical variable, Sex, was label-encoded then cast to “category” dtype.  <br>   • CatBoost ingested it via cat_features, and XGBoost’s new enable_categorical flag let it respect category structure without one-hot encoding—saving dimensions and preserving ordinal simplicity.<br><br>4. Three-Way Gradient-Boosting Ensemble<br>   • CatBoost, XGBoost, and LightGBM, each tuned with deep (max_depth=10), conservative learning rates (0.02), heavy subsampling (subsample=0.9, colsample_bytree=0.7), and thousands of trees.  <br>   • Five-fold CV with early stopping (100 rounds) ensured robust out-of-fold predictions. Test‐set forecasts were averaged across folds and models.<br><br>5. Unusual Yet Effective Choices<br>   • Mass-producing interaction features—even though tree models can learn them—jump-started performance and reduced split complexity.  <br>   • Leveraging XGBoost’s nascent categorical support kept feature bloat in check.  <br>   • A uniform hyperparameter scheme across three frameworks simplified tuning while benefiting from each library’s particular strengths.<br><br>Results & Takeaways<br>   • This cross-term blitz plus triple-tree ensemble achieved a top-tier RMSLE on the private leaderboard.  <br>   • It’s a reminder that creative feature engineering—even “old-school” multiplicative terms—can still move the needle substantially when combined with modern GBDT toolkits.<br><br>In short, sometimes the shortest path to machine-learning gains is to multiply.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/siddharth776/ps-s5e5-calorie-score-0-056">Read original article</a> &middot; <a href="https://www.kaggle.com/siddharth776/ps-s5e5-calorie-score-0-056">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

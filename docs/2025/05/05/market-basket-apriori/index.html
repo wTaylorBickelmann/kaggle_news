@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “When Groceries Turn Into Graphs: Mining Hidden Market-Basket Gold with Rules, Bubbles and Networks” - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “When Groceries Turn Into Graphs: Mining Hidden Market-Basket Gold with Rules, Bubbles and Networks”</h1>
+    <div class="meta">May 05, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+<figure>
+    <img src="/2025/05/05/market-basket-apriori/cover.png" alt="Headline: “When Groceries Turn Into Graphs: Mining Hidden Market-Basket Gold with Rules, Bubbles and Networks”">
+</figure>
+
+
+<div class="content">
+    Headline: “When Groceries Turn Into Graphs: Mining Hidden Market-Basket Gold with Rules, Bubbles and Networks”<br><br>In a refreshingly visual twist on market-basket analysis, this Kaggle notebook swaps supervised learning for classical association-rule mining—and then supercharges it with a multi-tiered visualization suite. Here’s the playbook:<br><br>1. From Raw Rows to One-Hot Features  <br>   • The raw CSV lists up to 20 items per customer (with many blanks). By iterating each row, the author builds a “transaction” list and feeds it into mlxtend’s TransactionEncoder—instantly converting every unique product into a binary column (“1” if bought, “0” otherwise).  <br>   • This minimal preprocessing is elegant: no imputation, no embedding—just pure basket presence/absence.<br><br>2. Apriori Meets Confidence  <br>   • Using a 2% minimum support threshold, frequent itemsets emerge quickly even in a sparse table of hundreds of products.  <br>   • Next comes association_rules with a floor of 30% confidence, pruning spurious pairings and spotlighting reliable cross-sells.<br><br>3. Bubble Charts & Histograms—Oh My!  <br>   • Antecedent–consequent pairs plot on a scatter where bubble size = lift and color = confidence. It instantly reveals “coffee → sugar” as a medium-confidence, high-lift gem, versus “soda → chips” as more ubiquitous but less surprising.  <br>   • A companion histogram of all confidences quantifies how many rules hover near the threshold versus truly rock-solid.<br><br>4. The Unusual: A Full-Blown Network Graph  <br>   • Turning each antecedent and consequent into graph nodes, edges are drawn with labels for confidence and thickness proportional to lift. This network view is the notebook’s showstopper—spotting item “hubs” (e.g., bread) and peripheral “spokes” (e.g., organic jam) at a glance.  <br>   • It’s rare to see market-basket mining melded so tightly with graph theory, giving product managers a visual “map” of co-purchase ecosystems.<br><br>5. Top 10 Rules by Lift  <br>   • Finally, a horizontal bar chart ranks the ten highest-lift rules—those rarely bought individually but extraordinarily synergistic when paired (think: exotic spices + specialty oils). <br><br>Results & Takeaways  <br>By combining classic apriori association with inventive network—and bubble—visualizations, this strategy not only uncovers strong “if-then” product pairings but frames them in formats that decision-makers instantly grasp. The notebook’s unusual leap lies in treating association rules as graph edges, turning dry statistics into an interactive roadmap for cross-sell campaigns. Whether you’re upselling at the grocery aisle or bundling digital goods, this approach reveals the hidden architecture of buyer behavior.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/abdomogahed/market-basket-apriori">Read original article</a> &middot; <a href="https://www.kaggle.com/abdomogahed/market-basket-apriori">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

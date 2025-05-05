@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “When Credit Cards Talk: Unmasking User Archetypes with Clever Imputation and Feature Twists”   - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “When Credit Cards Talk: Unmasking User Archetypes with Clever Imputation and Feature Twists”  </h1>
+    <div class="meta">May 05, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+<figure>
+    <img src="/2025/05/05/costumer-clustering-gmm-dbscan-kmeans/cover.png" alt="Headline: “When Credit Cards Talk: Unmasking User Archetypes with Clever Imputation and Feature Twists”  ">
+</figure>
+
+
+<div class="content">
+    Headline: “When Credit Cards Talk: Unmasking User Archetypes with Clever Imputation and Feature Twists”  <br><br>In a remarkably hands-on Kaggle notebook, data scientist Maryam Azimi turns a six-month snapshot of 9,000 credit-card holders into clear behavioral archetypes—using nothing more exotic than domain-driven imputation, ratio-based feature engineering and a battery of clustering algorithms. The result? A robust segmentation strategy that reveals high-risk borrowers, occasional spenders and loyal payers in one fell swoop.<br><br>Unusual Imputation by Domain Logic  <br>Rather than blanket-filling nulls with mean or median values, Azimi inspects the relationship between PAYMENTS and MINIMUM_PAYMENTS. If a customer never paid (PAYMENTS=0), her script sets MINIMUM_PAYMENTS to zero. If payments fall below the group average, she assumes the cardholder paid roughly the minimum and duplicates PAYMENTS. All other gaps default to the overall average payment. One lone missing CREDIT_LIMIT is simply dropped—minimizing distortion. This nuanced, rules-based approach preserves behavioral signals that broad imputation would wash away.<br><br>Feature Engineering: Ratios Reign Supreme  <br>With raw balances, transaction counts and frequencies in hand, Azimi builds telling ratios:  <br>• Balance-to-credit-limit and purchases-to-limit—flagging over-leveraged users.  <br>• Cash-advance-to-purchase ratios—exposing liquidity-hungry cardholders.  <br>• Average transaction size (total spend divided by number of purchases).  <br>• Installment versus one-off purchase frequencies—to catch big-ticket buyers.  <br>This focus on relative measures rather than absolute dollars levels the playing field across customers.<br><br>Modeling Pipeline: Multiple Clustering Flavors  <br>Scaled features feed into an array of algorithms—KMeans (including MiniBatch), Gaussian Mixture Models, Agglomerative Clustering and even DBSCAN for outlier hunting. Determining the optimal number of clusters relies on both the elbow method (automated via the Kneed library) and silhouette/Calinski-Harabasz scores. For density-based grouping, Azimi charts nearest-neighbor distances to tune DBSCAN’s epsilon parameter—revealing compact clusters of “super-users” and a sparse cloud of “dormant” accounts.<br><br>Standout Results  <br>The notebook surfaces three to five stable segments that align neatly with known credit-risk profiles. High-spenders with frequent installment purchases emerge alongside cautious cardholders who pay in full each month. Sparse clusters of cash-advance–heavy users light up as potential risk flags. By layering domain-centric imputation, smart ratios and a multipronged clustering assault, Azimi delivers a reproducible segmentation blueprint—perfect for banks or fintechs hungry for actionable customer insights.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/smaryamazimiasmaroud/costumer-clustering-gmm-dbscan-kmeans">Read original article</a> &middot; <a href="https://www.kaggle.com/smaryamazimiasmaroud/costumer-clustering-gmm-dbscan-kmeans">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

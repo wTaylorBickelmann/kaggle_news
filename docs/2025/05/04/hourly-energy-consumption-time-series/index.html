@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HEADLINE: “Clocking Demand: How Simple Time-Stamp Features and XGBoost Nail Hourly Power Forecasts” - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>HEADLINE: “Clocking Demand: How Simple Time-Stamp Features and XGBoost Nail Hourly Power Forecasts”</h1>
+    <div class="meta">May 04, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+
+<div class="content">
+    HEADLINE: “Clocking Demand: How Simple Time-Stamp Features and XGBoost Nail Hourly Power Forecasts”<br><br>By [Your Name]<br><br>A recent Kaggle notebook demonstrates that, when it comes to predicting hourly electricity consumption, sometimes less is more. The author forgoes elaborate lagged-series engineering or external weather inputs, leaning instead on a straightforward time-based feature set combined with the now-familiar XGBoost regressor. The result: a surprisingly accurate one-year-ahead forecast of PJM East’s power demand, with an RMSE of roughly 49 MW on the 2015 test window.<br><br>At the core of the strategy lies a robust feature-engineering function. From each timestamp, the code gleans eight predictors—hour, day of week, quarter, month, year, day of year, day of month, and ISO week of year. No rolling means, no differencing—just the calendar and clock. A flurry of boxplots confirms that each time slice (for instance, weekday versus weekend hours or seasonal quarters) shows distinctive consumption patterns.<br><br>After splitting the data at January 1, 2015, the notebook fits an XGBRegressor (1,000 trees, max depth 3, learning rate 0.01) with early stopping on both training and validation folds. The setup earns commendable stability: training halts when no gain appears after 50 rounds. Post-fit, the author ranks the input features by importance—day of year and hour emerge as the top drivers, followed by month and day of week.<br><br>Visualization of predictions against actual PJME_MW readings highlights the model’s ability to track daily and seasonal swings. A final error analysis computes daily mean absolute errors, flagging the 10 days in 2015 with the largest deviations (often holidays or extreme weather events).<br><br>What’s unusual—and what makes this approach appealing—is its minimalism. By relying purely on time stamps and a powerful gradient-boosting engine, the notebook sidesteps complicated domain-specific covariates while still capturing non-linear interactions among cyclical features. For practitioners aiming to prototype time-series forecasts quickly, this “time only + XGBoost” blueprint offers a compelling starting point—and a reminder that, sometimes, the clock itself is the best predictor of demand.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/hamoi9/hourly-energy-consumption-time-series">Read original article</a> &middot; <a href="https://www.kaggle.com/hamoi9/hourly-energy-consumption-time-series">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

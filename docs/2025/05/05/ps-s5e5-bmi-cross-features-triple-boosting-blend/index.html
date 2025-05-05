@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “Data Alchemy: How BMI, Square-Root Tricks and Cross-Terms Supercharge a Triple-Boosted Calorie Predictor”   - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “Data Alchemy: How BMI, Square-Root Tricks and Cross-Terms Supercharge a Triple-Boosted Calorie Predictor”  </h1>
+    <div class="meta">May 05, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+
+<div class="content">
+    Headline: “Data Alchemy: How BMI, Square-Root Tricks and Cross-Terms Supercharge a Triple-Boosted Calorie Predictor”  <br><br>In a recent Kaggle notebook, an enterprising data scientist transforms raw human metrics into a calorie-burn oracle by combining aggressive feature engineering with a three-pronged gradient-boosting ensemble. The secret sauce? A systematic expansion of numerical features—squared, square-rooted and pairwise-multiplied—to expose hidden non-linearities, plus a smart log transform of the calorie target to align with the RMSLE evaluation metric.  <br><br>First, the ‘Sex’ column is label-encoded and forced into categorical form so that CatBoost and LightGBM can exploit it directly without one-hot bloat. Then comes the fireworks: each numeric column (Age, Height, Weight, Duration, Heart_Rate, Body_Temp) is adorned with its square and square root, and every possible pair among them (including a freshly calculated BMI) is multiplied to create cross-term features. This brute-force polynomial expansion, unusual in its sheer breadth, attempts to surface every subtle interaction that might matter when the body burns calories under varying durations, intensities and physiologies.  <br><br>On the modeling front, the author defines three high-powered regressors—CatBoostRegressor, XGBRegressor and LGBMRegressor—with tuned settings for learning rate, max depth and early stopping. A 5-fold cross-validation loop yields out-of-fold predictions for reliable RMSLE estimates in each fold, while test-set predictions are averaged across folds to stabilize individual forecasts.  <br><br>Finally, the notebook blends the three models in a weighted average (40% XGBoost, 30% CatBoost, 30% LightGBM), then applies the inverse of the initial log1p transform and clips improbable values. This final ensemble—born of exhaustive feature engineering and thoughtful model diversification—achieves a surprisingly low RMSLE on the hold-out data, demonstrating that sometimes the best way to predict human metabolisms is to throw every polynomial and cross-interaction at the wall and see what sticks.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/canozensoy/ps-s5e5-bmi-cross-features-triple-boosting-blend">Read original article</a> &middot; <a href="https://www.kaggle.com/canozensoy/ps-s5e5-bmi-cross-features-triple-boosting-blend">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

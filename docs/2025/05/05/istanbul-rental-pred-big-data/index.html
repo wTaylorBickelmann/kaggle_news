@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “Spark, Flags and a Dash of Leakage: A Surprising Take on Istanbul Rental Price Modeling” - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “Spark, Flags and a Dash of Leakage: A Surprising Take on Istanbul Rental Price Modeling”</h1>
+    <div class="meta">May 05, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+<figure>
+    <img src="/2025/05/05/istanbul-rental-pred-big-data/cover.png" alt="Headline: “Spark, Flags and a Dash of Leakage: A Surprising Take on Istanbul Rental Price Modeling”">
+</figure>
+
+
+<div class="content">
+    Headline: “Spark, Flags and a Dash of Leakage: A Surprising Take on Istanbul Rental Price Modeling”<br><br>In a recent Kaggle notebook, a data enthusiast tackles Istanbul’s apartment‐for‐rent dataset with an unexpectedly simple yet controversial strategy. By leaning heavily on PySpark’s ML pipeline, the author glues together a handful of crafted features, wires them into a linear regression, and turns out an almost too-good-to-be-true R² score.<br><br>Key Steps and Techniques  <br>1. Spark Setup and EDA  <br>   • Ingested 30,000+ listings via SparkSession for scalable exploration.  <br>   • Ran basic “describe” statistics and a seaborn correlation heatmap on a Pandas slice to spot strongest relationships among rooms, area, age, floor, and price.<br><br>2. Feature Engineering “Brag Book”  <br>   • total_rooms = rooms + living rooms  <br>   • Boolean floor flags: is_ground_floor (floor == 0), is_top_floor (floor == building’s max), is_underground (floor < 0)  <br>   • Risky_floor: marks old (>20 years) flats on high floors (>5)  <br>   • m2_per_room = area ÷ total_rooms  <br>   • **Price_per_m2** = price ÷ area (the notebook’s most controversial “feature,” since price_per_m2 and price are mathematically intertwined)<br><br>3. Vector Assembly and Linear Regression  <br>   • Compiled these 12 predictors into a Spark ML VectorAssembler.  <br>   • Split 80/20 for train/test, fit a basic LinearRegression, and evaluated via R².<br><br>What’s Unusual (and a Little Fishy)  <br>Embedding price_per_m2 as an input effectively leaks information about the target (total price). Because price = (price_per_m2) × (area), the model sees a nearly perfect proxy for what it’s asked to predict. The result: an R² that soars into the 0.90–0.95 range—impressively high for a purely linear approach on heterogeneous real-estate data, but achieved at the expense of real predictive integrity.<br><br>Why It Matters  <br>While the notebook showcases the power of Spark’s end-to-end pipeline and smart indicator features (like risky_floor), it also illustrates a classic cautionary tale: introduce a feature that’s too close to your target and you’ll “predict” noise instead of learning patterns. As a demo of feature-engineering finesse, it’s brilliant; as a production recipe, it’s a reminder that data leakage can turn your model into little more than a calculator.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/yunusemreakca/istanbul-rental-pred-big-data">Read original article</a> &middot; <a href="https://www.kaggle.com/yunusemreakca/istanbul-rental-pred-big-data">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

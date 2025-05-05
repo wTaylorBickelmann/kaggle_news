@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “Seven Days, One Prediction: How a Bare-Bones LSTM Nearly Cracked Tomorrow’s Temperature” - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “Seven Days, One Prediction: How a Bare-Bones LSTM Nearly Cracked Tomorrow’s Temperature”</h1>
+    <div class="meta">May 04, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+<figure>
+    <img src="/2025/05/04/daily-temp-prediction-lstm/cover.png" alt="Headline: “Seven Days, One Prediction: How a Bare-Bones LSTM Nearly Cracked Tomorrow’s Temperature”">
+</figure>
+
+
+<div class="content">
+    Headline: “Seven Days, One Prediction: How a Bare-Bones LSTM Nearly Cracked Tomorrow’s Temperature”<br><br>In the crowded world of weather forecasting, one Kaggle notebook stands out for its elegant simplicity. Using just a week’s worth of daily minimum temperatures and a lightweight LSTM network, the author builds an end-to-end pipeline that delivers impressively low errors—without elaborate feature engineering or dozens of exogenous variables. Here’s the play-by-play:<br><br>1. Raw Data & Scaling  <br>   • Source: 10 years of daily minimum temperature readings in Melbourne.  <br>   • Trick: MinMaxScaler to squeeze values into [0,1], keeping training stable.  <br><br>2. Sliding-Window Supervised Learning  <br>   • Sequence Length: 7 days in → predict day 8.  <br>   • Implementation: a simple Python loop turns the time series into X (7-day windows) and y (next-day temp).  <br>   • Why it works: The model learns short-term autocorrelations—the thrust of many weather patterns.<br><br>3. A One-Layer LSTM with a ReLU Twist  <br>   • Architecture: Keras Sequential → LSTM(50 units, activation='relu') → Dense(1).  <br>   • Unusual Choice: ReLU inside an LSTM—most practitioners stick with tanh. Here, ReLU speeds convergence on this small dataset.  <br>   • Training: 20 epochs, batch size 16, 80/20 train-test split, monitoring validation MSE.<br><br>4. Results & What’s Surprising  <br>   • Final Test MSE ≈ 0.0041 (scaled).  <br>   • RMSE ≈ 0.064, which translates to a percentage error of roughly 6.4% when re-scaled.  <br>   • A single-layer LSTM, trained in minutes on a CPU, tracking real-world temperature swings with remarkable fidelity.<br><br>5. Why It Matters  <br>   Rather than piling on handcrafted seasonality or holiday indicators, this strategy leans on the LSTM’s memory cells to learn patterns directly from raw sequences. The upshot is a nimble, reproducible model that any data scientist can spin up in under an hour.<br><br>Key Takeaway: With minimal bells and whistles—no Fourier transforms, no external covariates—this notebook shows that a sliding-window LSTM, properly scaled and trained, can deliver surprisingly accurate next-day forecasts. Sometimes, less really is more.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/abdelrahman16/daily-temp-prediction-lstm">Read original article</a> &middot; <a href="https://www.kaggle.com/abdelrahman16/daily-temp-prediction-lstm">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

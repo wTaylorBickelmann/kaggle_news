@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “From BMI to Boosters: How a Kaggle Grandmaster Stacks Features—and Models—to Predict Calorie Burn” - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “From BMI to Boosters: How a Kaggle Grandmaster Stacks Features—and Models—to Predict Calorie Burn”</h1>
+    <div class="meta">May 04, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+
+<div class="content">
+    Headline: “From BMI to Boosters: How a Kaggle Grandmaster Stacks Features—and Models—to Predict Calorie Burn”<br><br>In a recent Kaggle Playground competition, an enterprising data scientist unveiled a machine-learning pipeline that marries aggressive feature engineering with a three-model gradient-boosting ensemble, capped by a simple Ridge stacker. The result? A record-setting RMSLE of 0.05941 in predicting calorie expenditure.<br><br>What Makes This Notebook Stand Out<br>• Polymath-style features: Beyond the obvious (Height, Weight, Age, Duration, HeartRate, Temperature), the author computes BMI, log-transformed duration, heart rate × duration, temperature per minute and weight ÷ age.  <br>• Pairwise blitz: Every numeric feature is squared, square-rooted and then cross-multiplied with every other numeric column—supercharging the dataset with higher-order interactions.  <br>• Log-1p magic: A log transform on both the Duration input and the Calories target stabilizes variance and tames outliers, a classic trick applied here at scale.  <br><br>The Modeling Playbook<br>1. Three diverse boosters—CatBoost, XGBoost and LightGBM—are each tuned with robust hyperparameters, early stopping and (for CatBoost) native categorical handling of the binary Sex variable.  <br>2. A five-fold cross-validation loop yields out-of-fold predictions for each base learner, ensuring every training sample contributes a fair estimate.  <br>3. A lightweight Ridge regression then ingests these “second-level” features—basically the three OOF prediction columns—and learns to blend them into a final score.  <br><br>Why It’s Interesting<br>• Hybrid simplicity: Instead of a deep neural network or a labyrinth of stacks, the notebook opts for a three-model “committee” plus a linear meta-model, demonstrating that well-tuned boosters can still reign supreme.  <br>• Feature deluge controlled: Generating hundreds of new columns can easily overfit, yet the combination of log transforms, careful clipping of final predictions (to a realistic 1–314 calorie range) and a convex Ridge penalization tames complexity.  <br>• Reproducible rigor: With open-source libraries and a step-by-step code path—from imports to final CSV output—the notebook reads like a recipe for success.  <br><br>Bottom Line<br>In this Kaggle Playground Series entry, no single magic algorithm appears. Instead, it’s the meticulous layering of feature transformations and the judicious ensemble of three gradient-boosters with a linear combiner that pushes performance over the edge. The approach may not rewrite the rules of machine learning, but it offers a master class in execution: build more, blend wisely, and always keep your predictions in check.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/canozensoy/ps-s5e5-feature-boosted-ridge-stacking">Read original article</a> &middot; <a href="https://www.kaggle.com/canozensoy/ps-s5e5-feature-boosted-ridge-stacking">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “Kaggle Notebook Goes the Distance with Cross-Feature Gymnastics and a Triple-Boosting Ensemble” - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “Kaggle Notebook Goes the Distance with Cross-Feature Gymnastics and a Triple-Boosting Ensemble”</h1>
+    <div class="meta">May 04, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+<figure>
+    <img src="/2025/05/04/ps-s5e5-calorie-score-0-056/cover.png" alt="Headline: “Kaggle Notebook Goes the Distance with Cross-Feature Gymnastics and a Triple-Boosting Ensemble”">
+</figure>
+
+
+<div class="content">
+    Headline: “Kaggle Notebook Goes the Distance with Cross-Feature Gymnastics and a Triple-Boosting Ensemble”<br><br>In a recent Kaggle Playground notebook tackling calorie prediction, the author combines classic EDA, aggressive feature‐crossing and a three-model boosting ensemble to squeeze every drop of signal out of six basic physiological measurements.<br><br>Key Steps and Unusual Twists<br><br>1. Log-Transform Target for Stability  <br>   After plotting the highly skewed “Calories” distribution, the author applies y = log1p(Calories). This transforms heavy right-tails into near-Gaussian form, making the subsequent regression more robust and freeing the model to minimize RMSLE (root mean squared log error) instead of raw RMSE.<br><br>2. All-Pairs Feature Crossings  <br>   Rather than hand-pick interactions, the notebook programmatically generates every pairwise product among the six numerical inputs (Age, Height, Weight, Duration, Heart_Rate, Body_Temp). These 15 new features—e.g., Age × Duration, Weight × Body_Temp—capture potential non-linear effects almost for free. It’s a brute-force approach that can balloon dimensionality, yet here it stays manageable and yields noticeable gains in out-of-fold scores.<br><br>3. Categorical Handling of “Sex”  <br>   The “Sex” column is label-encoded and explicitly passed as a categorical feature to CatBoost, XGBoost (with its new “enable_categorical” flag) and LightGBM. By preserving gender as a category rather than dummy-expanding it, the author leans on each library’s native handling of splits, which often outperforms one-hot encoding in boosting contexts.<br><br>4. Three-Way Boosting Ensemble  <br>   In a standard 5-fold cross-validation setup, the notebook trains:  <br>   • CatBoostRegressor (early stopping, native cat features)  <br>   • XGBRegressor (depth=10, η=0.02, gamma and subsample tuning, categorical enabled)  <br>   • LGBMRegressor (comparable tree-based hyperparameters).  <br>   Each fold outputs out-of-fold predictions and test-set forecasts, which are averaged per model and finally blended. This “all-stars” ensemble consistently beats any single learner and reduces variance.<br><br>Results  <br>By combining rigorous target transformation, exhaustive interaction terms and three state-of-the-art gradient-boosting frameworks—with proper handling of categorical data—the notebook reports a strong sub-0.05 RMSLE on the test split (private leaderboard). It’s a reminder that, even in 2024, thoughtful feature engineering plus careful ensembling can still outgun black-box deep nets on tabular data.<br><br>Why It Matters  <br>Most Kagglers settle for a few hand-crafted ratios or polynomial terms. This notebook’s no-prisoners strategy—generate every pairwise product, log the target, then flood three tuned boosters—serves as a blueprint for squeezing maximal performance from small to mid-sized tabular challenges.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/siddharth776/ps-s5e5-calorie-score-0-056">Read original article</a> &middot; <a href="https://www.kaggle.com/siddharth776/ps-s5e5-calorie-score-0-056">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

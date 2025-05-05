@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “Behind the Scenes of a Calorie‐Counting Powerhouse: How One Kaggle Notebook Stacks, Logs and Multiplies Its W - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “Behind the Scenes of a Calorie‐Counting Powerhouse: How One Kaggle Notebook Stacks, Logs and Multiplies Its W</h1>
+    <div class="meta">May 05, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+<figure>
+    <img src="/2025/05/05/ps-s5e5-feature-boosted-ridge-stacking/cover.png" alt="Headline: “Behind the Scenes of a Calorie‐Counting Powerhouse: How One Kaggle Notebook Stacks, Logs and Multiplies Its W">
+</figure>
+
+
+<div class="content">
+    Headline: “Behind the Scenes of a Calorie‐Counting Powerhouse: How One Kaggle Notebook Stacks, Logs and Multiplies Its Way to Precision”<br><br>By [Your Name]<br><br>In the competitive world of calorie‐expenditure prediction, a recent Kaggle Playground Series notebook has caught attention for its clever blend of feature engineering and model stacking, ultimately achieving an impressive RMSLE of 0.05941. At its core, this pipeline doesn’t rely on a single algorithm or a handful of hand‐picked features. Instead, it generates a sprawling set of derived variables, marries three state‐of‐the‐art gradient boosters, and then refines their outputs with a lightweight linear ensemble.<br><br>The feature library is where the notebook first raises eyebrows. Beyond familiar metrics like BMI and the log‐transformed duration of exercise, it constructs interaction terms—products of every pair of numeric fields—and even adds square and square‐root versions of key measures such as weight, heart rate and temperature. The result is an explosion of predictors that capture subtle, non‐linear relationships (for instance, how heat fluctuating per minute interacts with heart‐rate spikes) without any manual hypothesis testing.<br><br>On the modeling side, the author assembles CatBoost, XGBoost and LightGBM regressors—each tuned with robust hyperparameters and harnessing 5‐fold cross‐validation to produce out‐of‐fold predictions. CatBoost’s built-in handling of the Sex column as a true categorical feature stands out, while early stopping safeguards against overfitting in all three learners. Rather than choosing one “champion” model, the notebook embraces diversity: it averages test predictions across folds for each algorithm, then uses their cross‐validated outputs as inputs to a simple Ridge regression.<br><br>This two‐stage stack—three powerful tree ensembles feeding a linear meta‐model—delivers both flexibility and interpretability. The Ridge layer assigns weights that subtly correct biases in the base learners, smoothing their raw predictions into a final calorie estimate. Before writing out the submission, the pipeline reverses its earlier log1p transformation, clips values to a physiologically plausible range (1–314 calories), and submits a CSV.<br><br>The most striking takeaway is how a methodical, almost surgical expansion of features combined with a restrained stacking approach can outpace any single algorithm alone. The notebook’s success highlights a central lesson in modern data science: generate enough “perspectives” on your data, then let a simple ensemble decide which ones matter most.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/canozensoy/ps-s5e5-feature-boosted-ridge-stacking">Read original article</a> &middot; <a href="https://www.kaggle.com/canozensoy/ps-s5e5-feature-boosted-ridge-stacking">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

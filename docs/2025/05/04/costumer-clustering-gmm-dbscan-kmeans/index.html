@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “Zero-Payment Fill-Ins, KneeLocator Elbows and DBSCAN Dives: A Surprising Spin on Credit-Card Clustering” - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “Zero-Payment Fill-Ins, KneeLocator Elbows and DBSCAN Dives: A Surprising Spin on Credit-Card Clustering”</h1>
+    <div class="meta">May 04, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+<figure>
+    <img src="/2025/05/04/costumer-clustering-gmm-dbscan-kmeans/cover.png" alt="Headline: “Zero-Payment Fill-Ins, KneeLocator Elbows and DBSCAN Dives: A Surprising Spin on Credit-Card Clustering”">
+</figure>
+
+
+<div class="content">
+    Headline: “Zero-Payment Fill-Ins, KneeLocator Elbows and DBSCAN Dives: A Surprising Spin on Credit-Card Clustering”<br><br>In a recent Kaggle notebook, data scientist Maryam Azimi tackles the classic “Credit Card Dataset for Clustering” challenge with an unusually domain-aware feature-engineering and model-selection pipeline. Rather than defaulting to blanket median imputation, she applies business logic to patch holes in MINIMUM_PAYMENTS:  <br>• If a customer recorded zero total PAYMENTS, she sets MINIMUM_PAYMENTS to zero.  <br>• If PAYMENTS is below the cohort’s average yet MINIMUM_PAYMENTS is missing, she assumes the customer is paying roughly the minimum—so she equates MINIMUM_PAYMENTS to PAYMENTS.  <br>• All other NaNs default to the global average of PAYMENTS.  <br><br>That small twist—instead of blind column statistics—anchors later insights in real-world billing behavior.<br><br>After dropping the identifier and a lone CREDIT_LIMIT outlier, Azimi standardizes the remaining 17 numerical features. She then scouts for natural groupings via two complementary lenses: the classic “elbow” method and silhouette analysis for K-Means, and a data-driven eps selection for DBSCAN. Here she leans on the Kneed library’s KneeLocator to detect the point of diminishing returns in both the total within-cluster sum of squares (for K values 2–10) and the sorted k-nearest-neighbor distances (for eps estimation in DBSCAN). The result? A tight recommendation of three to four clusters under K-Means and a nuanced, noise-tolerant grouping under DBSCAN.<br><br>Azimi doesn’t stop there. She cross-validates with Agglomerative Clustering, Gaussian Mixture Models and even MiniBatchKMeans, comparing models via silhouette and Calinski-Harabasz scores. In her hands, DBSCAN’s ability to isolate outliers complements K-Means’ crisp centroids: roughly 10 percent of customers—occasional big spenders or near-zero savers—fall into “noise” buckets that merit individualized marketing.<br><br>Key takeaways:  <br>• Rule-based imputation can beat one-size-fits-all treatments when domain logic is clear.  <br>• KneeLocator streamlines both elbow and eps choices, removing guesswork and chart-gazing.  <br>• A hybrid view—pairing centroid-based and density-based methods—captures both core segments and anomaly profiles in credit-card usage.<br><br>Early results suggest that banks and card issuers could leverage this dual clustering to tailor rewards, credit-limit adjustments and fraud-monitoring thresholds more precisely than ever before.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/smaryamazimiasmaroud/costumer-clustering-gmm-dbscan-kmeans">Read original article</a> &middot; <a href="https://www.kaggle.com/smaryamazimiasmaroud/costumer-clustering-gmm-dbscan-kmeans">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

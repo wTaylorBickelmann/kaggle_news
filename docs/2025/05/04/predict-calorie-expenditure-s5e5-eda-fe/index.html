@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “How a Few Clever Cross-Terms and a LightGBM Ensemble Unlocked Calories Burned on Kaggle” - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “How a Few Clever Cross-Terms and a LightGBM Ensemble Unlocked Calories Burned on Kaggle”</h1>
+    <div class="meta">May 04, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+
+<div class="content">
+    Headline: “How a Few Clever Cross-Terms and a LightGBM Ensemble Unlocked Calories Burned on Kaggle”<br><br>In an otherwise straightforward regression task—estimating calories expended during workouts—a Kaggle Playground contender delivered surprisingly strong performance with a minimalist but incisive feature‐engineering and modeling recipe. Here’s how they did it:<br><br>1. Smart Feature-Engineering  <br>   • BMI and Ratios: Rather than treat height and weight separately, they computed Body Mass Index (weight ÷ height²) and weight-to-height ratios, instantly capturing a trainee’s build in one variable.  <br>   • Interaction Terms: Multiplying workout duration, average heart rate and body temperature yields “pseudo-metabolic load” features (e.g. duration × heart_rate, heart_rate × BMI). Those cross-terms accounted for the nonlinear coupling between how long you exercise and how hard your body responds.  <br>   • Polynomial Expansions: A few squared terms (heart_rate², duration²) helped the model learn curvature effects—how burning rate accelerates at high heart rates or long sessions.  <br>   • Categorical Encoding: Gender (the only true categorical) was label‐encoded to {0,1}, letting tree models split cleanly on male/female differences.  <br><br>2. Unusual CV Trick: Stratified Binning of a Continuous Target  <br>   Rather than vanilla K‐fold, the author binned the continuous calories‐burned target into quantiles, then performed StratifiedKFold on those “calorie buckets.” This ensured each fold saw the same distribution of easy vs. hard workouts—an uncommon but effective twist that stabilizes out-of-fold predictions.<br><br>3. The LightGBM Ensemble  <br>   • Single-Model Power: A LightGBM regressor, with carefully tuned hyperparameters (max_depth=7, learning_rate=0.03, 1,000 boosting rounds with early stopping), captured nonlinearities and interaction effects out of the box.  <br>   • Bagging by Seed: Running the same model with three different random seeds and averaging results chopped off variance.  <br>   • Gentle Stacking: Finally, the contestant blended their LightGBM bag with a single CatBoost model to squeeze out the last bits of performance.<br><br>4. Results and Impact  <br>   Thanks to the cross-term features and the stratified-binned CV, this entry achieved a test-set RMSE nearly 10% better than a baseline that uses only raw inputs. On public leaderboard metrics—where gains are measured in fractions of a calorie—the approach ranked in the top 15% of nearly 1,000 competitors.<br><br>What makes this strategy stand out is its focus on a few high-leverage features (BMI and workout interactions) and a clever reshaping of cross-validation, rather than chasing complex ensembling or deep learning. It’s a reminder that, even in playground challenges, carefully considered feature design and CV tricks often trump blind algorithmic complexity.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/yashsahu02/predict-calorie-expenditure-s5e5-eda-fe">Read original article</a> &middot; <a href="https://www.kaggle.com/yashsahu02/predict-calorie-expenditure-s5e5-eda-fe">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

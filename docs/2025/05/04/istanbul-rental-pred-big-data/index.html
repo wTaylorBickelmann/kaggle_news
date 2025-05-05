@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “Spark’s Istanbul Rental Model Turns Its Own Answer Into a Feature—And Scores Nearly Perfectly” - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “Spark’s Istanbul Rental Model Turns Its Own Answer Into a Feature—And Scores Nearly Perfectly”</h1>
+    <div class="meta">May 04, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+<figure>
+    <img src="/2025/05/04/istanbul-rental-pred-big-data/cover.png" alt="Headline: “Spark’s Istanbul Rental Model Turns Its Own Answer Into a Feature—And Scores Nearly Perfectly”">
+</figure>
+
+
+<div class="content">
+    Headline: “Spark’s Istanbul Rental Model Turns Its Own Answer Into a Feature—And Scores Nearly Perfectly”<br><br>In a recent Kaggle exploration of Istanbul apartment rentals, an unconventional—but highly effective—feature-engineering gambit steals the show. The analyst loads raw listing data into a local PySpark session, explores correlations with Seaborn, and then embarks on a flurry of calculated columns that boost a straightforward linear regression to surprisingly lofty R² scores.<br><br>Key Modeling Steps<br>• Data ingestion and cleanup. After reading 65,000+ records into Spark DataFrames, the notebook drops nulls and engineers a “total_rooms” field by summing bedrooms and living rooms.  <br>• Floor flags. Using Spark’s built-in aggregation, the script identifies the building’s maximum floor dynamically and tags each listing as ground floor, top floor, or even subterranean. A bespoke “risky_floor” flag further marks properties over five stories in structures older than 20 years.  <br>• Ratio features (and a sneaky leak). The model introduces m2_per_room and—crucially—price_per_m2, computed by dividing the target (price) by area. When paired with “area,” this engineered ratio practically hands the regression its answer.  <br>• VectorAssembler & Spark ML. Twelve numeric fields (including the price-per-square-meter leak) feed directly into a Spark ML Pipeline. No categorical encoding beyond booleans is applied—age categories are created but omitted from modeling.  <br>• Validation. An 80/20 train-test split and Spark’s LinearRegression routine yield near-perfect R², a tell-tale sign that the model is learning the target by heart rather than generalizing.<br><br>What’s Unusual—and Why It Matters<br>Analysts rarely grant models access to any transformation of the very metric they’re trying to predict. By constructing price_per_m2, the notebook effectively encodes price into a feature, then reassembles it via area to retrieve the original. While this “data leakage” supercharges performance metrics, it undermines real-world utility: a model should anticipate rental price from independent attributes like location, age, or layout—not its own future output.<br><br>Takeaways and Results<br>• Clever Spark use: Leveraging PySpark DataFrames, caching, dynamic max-floor calculations, and VectorAssembler demonstrates how big-data tools can streamline feature pipelines—even on moderate datasets.  <br>• Feature engineering wins—and warns: While floor flags and per-room ratios capture genuine apartment dynamics, any feature derived directly from the label should ring alarm bells.  <br>• Benchmark caution: A sky-high R² (often north of 0.95) is exciting—but may signal target leakage rather than predictive insight.<br><br>In sum, the Istanbul Rental Predict notebook is a case study in both the power and pitfalls of aggressive feature engineering. Its standout lesson for data professionals: engineer with intention—and never feed your model the answer key.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/yunusemreakca/istanbul-rental-pred-big-data">Read original article</a> &middot; <a href="https://www.kaggle.com/yunusemreakca/istanbul-rental-pred-big-data">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

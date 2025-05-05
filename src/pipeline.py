@@ -1,13 +1,17 @@
 """Main pipeline to fetch Kaggle hot notebooks, summarise and render static site."""
+from dotenv import load_dotenv
+load_dotenv()  # pulls KAGGLE_USERNAME, KAGGLE_KEY, OPENAI_API_KEY from .env if present
+
 from datetime import datetime
 from pathlib import Path
 import shutil
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from slugify import slugify
+from kaggle.api.kaggle_api_extended import KaggleApi
 
-from kaggle_fetch import fetch_hot_kernels, pull_kernel_notebook
-from llm_summarize import summarise_notebook
+from .kaggle_fetch import fetch_hot_kernels, pull_kernel_notebook
+from .llm_summarize import summarise_notebook
 
 SITE_ROOT = Path("docs")  # GitHub Pages serves /docs on the main branch
 TEMPLATES_DIR = Path(__file__).parent / "templates"
@@ -29,6 +33,7 @@ def main():
     notebooks = fetch_hot_kernels(limit=10)
 
     api_cache = Path(".cache/kernels")
+    date_dir = f"{today.year}/{today.strftime('%m')}/{today.strftime('%d')}"
     articles = []
     for nb in notebooks:
         ref = nb["ref"]
@@ -38,8 +43,8 @@ def main():
         if ipynb_path is None:
             print("Could not download", ref)
             continue
-        summary = summarise_notebook(ipynb_path)
         article_dir = SITE_ROOT / str(today.year) / today.strftime("%m") / today.strftime("%d") / slug
+        summary = summarise_notebook(ipynb_path, image_dir=article_dir)
         article_html_path = article_dir / "index.html"
 
         article_context = {
@@ -54,8 +59,14 @@ def main():
 
         articles.append({
             **nb,
-            **summary,
+            "title": summary["title"],
+            "tagline": summary["tagline"],
+            "image_url": summary["image_url"],
+            "slug": slug,
+            "url": nb["url"],
+            "link": f"{date_dir}/{slug}/index.html",
             "original_url": nb["url"],
+            "source_domain": nb["source_domain"],
         })
 
     # render front page

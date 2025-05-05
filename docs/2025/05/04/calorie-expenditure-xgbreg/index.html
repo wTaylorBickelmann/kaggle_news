@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A recent Kaggle “Playground Series” notebook tackles per‐person calorie burn prediction with a surprisingly straightforw - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>A recent Kaggle “Playground Series” notebook tackles per‐person calorie burn prediction with a surprisingly straightforw</h1>
+    <div class="meta">May 04, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+
+<div class="content">
+    A recent Kaggle “Playground Series” notebook tackles per‐person calorie burn prediction with a surprisingly straightforward, yet richly engineered feature set and a classic XGBoost model. After loading clean fitness logs (age, sex, height, weight, heart rate, exercise duration), the author creates a suite of composite variables aimed at capturing “intensity” and physiological ratios:<br><br> • Weight_per_Age and Duration_per_Age: normalize body mass and workout length by age.  <br> • HeartRate_per_kg and Duration_per_weight: heart‐rate and time scaled to body weight.  <br> • Duration_heart_rate: raw interaction of duration and heart rate.  <br> • duration_sum and duration_multi: additive and multiplicative combinations of the three “duration‐scaled” metrics.<br><br>Height is converted from centimeters to meters, then used alongside weight to compute BMI. Sex is mapped to a binary flag. No imputation or encoding beyond this, since the dataset contains no missing entries.<br><br>For modeling, an XGBRegressor (200 trees, learning rate 0.05, max depth 10) is trained on an 80/20 train–test split. Predictions are clipped to zero to avoid negative calorie values. The approach yields impressively low error—mean squared error and root‐mean‐squared‐log‐error both suggesting tight alignment with ground truth (e.g., RMSLE on the order of 0.02–0.03).<br><br>What’s unusual here is the heavy reliance on handcrafted multiplicative and additive features rather than automated dimensionality reduction or deep nets. The duration_sum/multi variables in particular encode nonlinear interactions that XGBoost can readily exploit. The notebook wraps up by extracting and normalizing feature importances—BMI, Duration_per_weight, and Duration_heart_rate emerge as top predictors—persisting the model via joblib and exporting a ready‐to‐submit CSV. This elegant “feature‐first” strategy underscores that, even in 2024, clever metrics engineering can rival more complex algorithms.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/bhaskarmishra44796/calorie-expenditure-xgbreg">Read original article</a> &middot; <a href="https://www.kaggle.com/bhaskarmishra44796/calorie-expenditure-xgbreg">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

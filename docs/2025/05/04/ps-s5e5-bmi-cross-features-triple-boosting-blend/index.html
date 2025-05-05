@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “Squaring Up Calories: How BMI, Cross-Terms and a Trio of Boosters Boosted Calorie-Burn Predictions” - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “Squaring Up Calories: How BMI, Cross-Terms and a Trio of Boosters Boosted Calorie-Burn Predictions”</h1>
+    <div class="meta">May 04, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+
+<div class="content">
+    Headline: “Squaring Up Calories: How BMI, Cross-Terms and a Trio of Boosters Boosted Calorie-Burn Predictions”<br><br>In a recent Kaggle notebook tackling calorie-expenditure forecasting, an uncommonly aggressive feature-engineering pipeline—combined with a three-model gradient-boosting ensemble—delivers state-of-the-art results. The author begins by carefully encoding “Sex” as a true categorical type (instead of dummy drops) to exploit CatBoost’s and LightGBM’s native handling of categories.  <br><br>Next comes the fireworks in feature engineering. Beyond simply calculating Body-Mass-Index (BMI), the script:  <br>• Squares and takes the square root of every key numeric variable (Age, Height, Weight, Duration, Heart_Rate, Body_Temp, BMI) to expose non-linear signals.  <br>• Generates exhaustive pairwise interaction terms by multiplying each numeric feature with every other (including BMI), capturing subtle, higher-order relationships—think “Age × Heart_Rate” or “√Weight × Duration².”  <br><br>On the modeling front, the notebook fits three heavy hitters—CatBoostRegressor, XGBRegressor, and LGBMRegressor—each tuned for low learning rates, modest tree depth, and early stopping on a 5-fold cross-validated log-scale RMSE. The target Calories are log1p-transformed to stabilize variance and directly optimize RMSLE, then inverse-transformed before final submission.  <br><br>The real novelty lies in the weighted blending: test-set predictions are averaged across folds for each model, then combined in a 40% XGBoost / 30% CatBoost / 30% LightGBM mix. This carefully calibrated cocktail reduces variance, leverages each booster’s idiosyncratic strengths, and delivers one of the top leaderboard scores.  <br><br>Key takeaway: meticulous, domain-inspired feature engineering—especially squared, root, and cross-term expansions—paired with a balanced booster ensemble can dramatically sharpen regression accuracy, even on a seemingly simple problem like estimating calories burned.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/canozensoy/ps-s5e5-bmi-cross-features-triple-boosting-blend">Read original article</a> &middot; <a href="https://www.kaggle.com/canozensoy/ps-s5e5-bmi-cross-features-triple-boosting-blend">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “Pumping Up Recall: How a Kaggle Notebook Uses SMOTE-Powered Pipelines to Catch Early Stroke Risks” - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “Pumping Up Recall: How a Kaggle Notebook Uses SMOTE-Powered Pipelines to Catch Early Stroke Risks”</h1>
+    <div class="meta">May 05, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+<figure>
+    <img src="/2025/05/05/stroke-prediction-using-machine-learning/cover.png" alt="Headline: “Pumping Up Recall: How a Kaggle Notebook Uses SMOTE-Powered Pipelines to Catch Early Stroke Risks”">
+</figure>
+
+
+<div class="content">
+    Headline: “Pumping Up Recall: How a Kaggle Notebook Uses SMOTE-Powered Pipelines to Catch Early Stroke Risks”<br><br>In a recent Kaggle notebook titled “Early Stroke Risk Detection Using Health Data and Machine Learning Models,” an analytical strategy stands out for its laser focus on recall—catching every possible stroke case—even at the expense of some false alarms. Here’s how the author combines feature engineering, imbalance-aware pipelines and two classic classifiers to push model sensitivity into the 80–90% range.<br><br>1. The Data Challenge  <br>• 5,110 patient records, only ~5% labeled “stroke.”  <br>• Mix of numeric (age, BMI, glucose) and categorical (gender, marital status, smoking).  <br>• Missing BMI entries and a tiny “Other” gender category that risks overfitting.<br><br>2. Cleaning & Pre-Processing  <br>• Median imputation for BMI gaps.  <br>• Drop the “Other” gender rows to simplify encoding.  <br>• Deduplication to remove any exact‐copy patients.  <br>• Two‐pronged ColumnTransformer:  <br>  – Numeric pipeline: median imputer → StandardScaler  <br>  – Categorical pipeline: SimpleImputer (most frequent) → OneHotEncoder  <br><br>3. Tackling Class Imbalance with SMOTE in a Pipeline  <br>• Wrapped the entire preprocessor with imblearn’s Pipeline, inserting SMOTE before model training.  <br>• This ensures synthetic minority-class examples are generated only on training folds, preventing data leakage.  <br>• Key insight: by embedding SMOTE inside the cross-validation loop (StratifiedKFold), the author preserves truly unseen test data—an often‐overlooked best practice.<br><br>4. Models & Hyperparameter Search  <br>• Random Forest and Logistic Regression, each subjected to GridSearchCV:  <br>  – RF: number of trees (100–300), max depth (5–15), class_weight options  <br>  – LR: L1 vs. L2 penalty, C parameter grid  <br>• Optimization target: maximize recall, then F1-score, with ROC-AUC as a tie-breaker.<br><br>5. Standout Results  <br>• Random Forest soared to ~0.87 recall, 0.78 F1, 0.85 ROC-AUC on held-out data.  <br>• Logistic Regression posted ~0.75 recall, trading some sensitivity for interpretability.  <br>• Feature importance from RF: age, avg_glucose_level, and BMI dominate—underscoring well-known clinical risk factors.<br><br>What’s unusual or interesting?  <br>Rather than optimize for raw accuracy (misleading in a 95:5 class split), the notebook prioritizes recall, echoing the real‐world cost of missing a stroke. Embedding SMOTE inside a scikit-learn–compatible pipeline with proper cross-validation is also a strong demonstration of how to prevent “peeking” bias. Finally, by comparing a high-capacity tree ensemble with a sparse linear model, the author balances predictive power against model transparency—crucial for clinical adoption.<br><br>In sum, this notebook provides a clear, reproducible blueprint for anyone tackling rare‐event medical predictions. Its thoughtful blend of best‐practice imputation, strict leakage controls, oversampling, and recall‐driven tuning makes it a standout resource for data scientists in healthcare.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/shahnawaj9/stroke-prediction-using-machine-learning">Read original article</a> &middot; <a href="https://www.kaggle.com/shahnawaj9/stroke-prediction-using-machine-learning">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

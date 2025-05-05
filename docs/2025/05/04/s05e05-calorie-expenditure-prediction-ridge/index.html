@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “Kaggle Competitor Steals a Page from the Original Dataset to Predict Burned Calories” - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “Kaggle Competitor Steals a Page from the Original Dataset to Predict Burned Calories”</h1>
+    <div class="meta">May 04, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+<figure>
+    <img src="/2025/05/04/s05e05-calorie-expenditure-prediction-ridge/cover.png" alt="Headline: “Kaggle Competitor Steals a Page from the Original Dataset to Predict Burned Calories”">
+</figure>
+
+
+<div class="content">
+    Headline: “Kaggle Competitor Steals a Page from the Original Dataset to Predict Burned Calories”<br><br>In a surprisingly elegant twist on a standard regression challenge, this Kaggle notebook doesn’t stop at the playground-series data—it reaches back to the vendor’s original Calories‐Burnt CSV to drive feature insights, then unleashes a finely tuned ensemble of gradient-booster and linear models. The result: a top-tier public leaderboard score with very little hand-crafted feature bleeding.<br><br>1. Dual Data EDA, Without the Merge  <br>   Rather than blindly engineering new interactions or polynomial terms, the author loads the contest train/test split alongside the “original” calories.csv. They map Gender→Sex (male=0/female=1), log1p the target for variance stabilization, then compute mutual_info_regression separately on each dataset. By showing bar charts of mutual‐information and side-by-side heatmaps of pairwise correlations, they validate that the small playground sample faithfully represents the full distribution—no wholesale feature additions necessary.<br><br>2. Light Touch Feature Engineering  <br>   • Categorical Encoding: sex → 0/1.  <br>   • Target Transform: ylog=log1p(Calories).  <br>   • No fancy polynomials or group aggregates—just solid EDA to confirm feature relevance and rule out leakage.  <br><br>3. A Hyperparameter Blitz with Optuna  <br>   With a 5-fold KFold (shuffle, seed=42) in place, the author fires up Optuna for 250 trials to tune two flagship regressors:  <br>   – A scikit-learn HistGradientBoostingRegressor with colossal settings (max_depth=59, max_iter≈4,454, L2 regularization≈10.4, max_features≈0.31).  <br>   – A LightGBM classic GBDT (n_estimators=50,000, num_leaves=89, colsample_bytree≈0.82, reg_alpha≈2.03).  <br><br>4. A Stacked Ensemble via Koolbox.Trainer  <br>   Rounding out the lineup: XGBRegressor, CatBoostRegressor, and a Ridge baseline. All five models are cross-validated in parallel, early-stopping and logging evaluation metrics, then blended via the koolbox “Trainer” utility. This orchestrated stack squeezes out the last bits of RMSE gain without any bespoke feature wizardry.<br><br>What’s Unusual & Interesting  <br>– “External EDA” only: the original dataset is never merged or used for sampling—it serves purely as a sanity check and guide to feature importance.  <br>– Mutual Information over mere correlation: picking up non‐linear ties that a heatmap alone would miss.  <br>– Aggressive hyperparameter search: ridiculous tree depths and iteration counts, tamed by heavy regularization and early stopping.  <br>– Koolbox.Trainer: a lesser-known library that automates CV, logging, and stacking in one shot.<br><br>Results  <br>By leaning on external EDA, muted feature engineering, and a hyper-tuned stacking regime, this notebook achieves a sub-1.5 RMSE on the public leaderboard—proof that smart model orchestration can outpace elaborate feature scheming.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/ravaghi/s05e05-calorie-expenditure-prediction-ridge">Read original article</a> &middot; <a href="https://www.kaggle.com/ravaghi/s05e05-calorie-expenditure-prediction-ridge">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

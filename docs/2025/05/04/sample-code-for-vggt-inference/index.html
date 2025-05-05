@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In a recent Kaggle demo, researchers showcase VGGT (“Visual Geometry-Grounded Transformer”), a novel multi-task vision m - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>In a recent Kaggle demo, researchers showcase VGGT (“Visual Geometry-Grounded Transformer”), a novel multi-task vision m</h1>
+    <div class="meta">May 04, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+
+<div class="content">
+    In a recent Kaggle demo, researchers showcase VGGT (“Visual Geometry-Grounded Transformer”), a novel multi-task vision model that marries transformer-style feature aggregation with explicit 3-D reasoning. Rather than treating depth or pose estimation as isolated heads on a convolutional backbone, VGGT first extracts patch-based tokens from input images, then feeds them through a learnable “aggregator” transformer. This produces a compact set of geometry-rich tokens plus indices (ps_idx) pointing back to spatial locations in the original image. <br><br>From these aggregated tokens, VGGT branches into three specialist “heads”:  <br>• A camera head that predicts a pose encoding, converted via a small pose-to-matrix function into extrinsic and intrinsic calibration parameters.  <br>• A depth head that outputs per-pixel depth maps along with confidence scores.  <br>• A point-cloud head that directly regresses 3-D coordinates for each pixel, again with a learned confidence.  <br><br>To validate its predictions, the notebook also unprojects the depth map—using the predicted camera matrices—into a canonical 3-D point cloud. The fact that this unprojected cloud closely matches the model’s direct point-head output underscores VGGT’s internal consistency.  <br><br>What’s unusual here is the explicit, end-to-end fusion of attention-based feature learning and geometric constraints. Most modern depth models either ignore camera calibration or disentangle it from feature extraction; VGGT tightly loops calibration, depth, and point-cloud regression into one transformer architecture. The demo leverages PyTorch’s autocast and bfloat16 optimizations for speed, then uses rerun.io to interactively visualize images, depth heatmaps, confidence masks, and 3-D reconstructions—all in a Kaggle notebook. Early results are impressive, producing coherent point clouds even on complex indoor and outdoor scenes, hinting at a powerful new paradigm for 3-D computer vision.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/columbia2131/sample-code-for-vggt-inference">Read original article</a> &middot; <a href="https://www.kaggle.com/columbia2131/sample-code-for-vggt-inference">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

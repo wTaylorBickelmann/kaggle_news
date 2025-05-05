@@ -24,9 +24,20 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Configure Kaggle credentials
+        run: |
+          mkdir -p ~/.kaggle
+          echo "{\"username\":\"${KAGGLE_USERNAME}\", \"key\": \"${KAGGLE_KEY}\"}" > ~/.kaggle/kaggle.json
+          chmod 600 ~/.kaggle/kaggle.json
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+
       # Run pipeline that scrapes, summarises, renders & writes to site/
       - name: Run pipeline script
         run: python -m src.pipeline
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       # Commit any new files (images, html) back to repo
       - name: Commit and push if changes

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title: Brute-Force Cross-Terms and AutoML: A Lean H2O-Powered Calorie Predictor - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Title: Brute-Force Cross-Terms and AutoML: A Lean H2O-Powered Calorie Predictor</h1>
+    <div class="meta">May 04, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+
+<div class="content">
+    Title: Brute-Force Cross-Terms and AutoML: A Lean H2O-Powered Calorie Predictor<br><br>In a recent Kaggle notebook, a contributor leverages H2O’s AutoML to tackle calorie expenditure prediction, combining a surprisingly simple feature-engineering trick with a hands-off modeling pipeline. Starting from a basic six-column set (Age, Height, Weight, Duration, Heart Rate and Body Temperature), the author automatically constructs every pairwise “cross term” (e.g. Age × Weight, Duration × Heart_Rate, etc.), multiplying all 15 possible numerical pairs and appending them to both train and test sets.<br><br>This brute-force interaction strategy—often eschewed in favor of domain-informed features or dimensionality-reduction—proves effective when paired with H2OAutoML. After converting the augmented DataFrame to an H2OFrame, the notebook spins up a 2,000-second AutoML run, specifying RMSLE as its sorting metric and enforcing five-fold cross-validation. With no bespoke hyperparameter grids, the pipeline automatically trains dozens of models (GBMs, Random Forests, XGBoost, Deep Learning and stacked ensembles) and ranks them by cross-validated RMSLE.<br><br>The “unusual” element lies in the reliance on exhaustive, untargeted feature crosses rather than curated transformations, trusting AutoML to sift useful signals from redundant or noisy interactions. The result: a top leaderboard model that in production easily outperforms a basic baseline, validating the power of automated stacking when fed a rich—but unrefined—feature set.<br><br>Beyond its engineering economy, the notebook offers a template for rapid prototyping: minimal code, no manual tuning, and a single line of AutoML to unearth powerful ensembles. For practitioners keen on surprising performance boosts without the headache of manual feature curation, this approach merits a spot in the modern data-scientist’s toolkit.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/satyaprakashshukl/h20-predict-calorie-expenditure">Read original article</a> &middot; <a href="https://www.kaggle.com/satyaprakashshukl/h20-predict-calorie-expenditure">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

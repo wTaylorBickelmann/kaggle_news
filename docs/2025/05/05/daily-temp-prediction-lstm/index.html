@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: Seven Days to Tomorrow: How a Humble LSTM Turned a Week of Temperatures into a Weather Predictor - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: Seven Days to Tomorrow: How a Humble LSTM Turned a Week of Temperatures into a Weather Predictor</h1>
+    <div class="meta">May 05, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+<figure>
+    <img src="/2025/05/05/daily-temp-prediction-lstm/cover.png" alt="Headline: Seven Days to Tomorrow: How a Humble LSTM Turned a Week of Temperatures into a Weather Predictor">
+</figure>
+
+
+<div class="content">
+    Headline: Seven Days to Tomorrow: How a Humble LSTM Turned a Week of Temperatures into a Weather Predictor<br><br>In the crowded world of weather forecasting, a recent Kaggle notebook serves as a refreshingly simple case study in time-series modeling. Working with the classic “Daily Minimum Temperatures” dataset, the author demonstrates an end-to-end pipeline—from raw CSV to forecast—in under 50 lines of code.<br><br>Key Strategy: Sliding-Window Feature Engineering  <br>• Raw Series to Supervised Learning  <br>  – No fancy calendar tricks, no exogenous inputs: just yesterday’s temperatures.  <br>  – A 7-day “look-back” window (sequence_length=7) is slid across the time series to produce X (7 days) → y (next day) pairs.  <br>• Scaling for Stability  <br>  – A MinMaxScaler confines values to [0,1], a must when feeding data into neural nets.<br><br>Modeling: A Single-Layer LSTM with a Twist  <br>• Architecture  <br>  – One LSTM layer of 50 units—surprisingly using ReLU activation instead of the more common tanh.  <br>  – A single Dense neuron to output tomorrow’s scaled temperature.  <br>• Training  <br>  – 20 epochs, batch size 16, with an 80/20 train-test split and real-time validation.<br><br>Unusual/Interesting Aspects  <br>• ReLU in an LSTM cell—this choice risks exploding activations yet appears to converge smoothly on this dataset.  <br>• Zero additional features—no rolling averages, no holiday flags—just raw readings.  <br>• Error as “Percentage”  <br>  – After computing RMSE in scaled units (~0.064), multiplying by 100 yields a “percentage error” metric rarely seen in academic forecasts.<br><br>Results and Takeaways  <br>• Final Test MSE: ~0.0041  <br>• Final Test RMSE: ~0.064 (≈6.4% when scaled)  <br>• Visualization juxtaposes actual and predicted daily minima, showing tight alignment through seasonal swings.<br><br>Bottom line: This notebook’s real lesson isn’t that it outperforms state-of-the-art meteorology but that, sometimes, a minimalist approach—7 days of history and a single layered LSTM—can deliver surprisingly accurate, interpretable results. For data scientists seeking a no-frills illustration of sequence-to-one forecasting, it’s a model blueprint that’s as elegant as it is effective.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/abdelrahman16/daily-temp-prediction-lstm">Read original article</a> &middot; <a href="https://www.kaggle.com/abdelrahman16/daily-temp-prediction-lstm">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

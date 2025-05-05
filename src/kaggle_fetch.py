@@ -17,7 +17,7 @@ def fetch_hot_kernels(limit: int = 30):
         title = k.title
         url = f"https://www.kaggle.com/{ref}"
         source_domain = "kaggle.com"
-        image_url = k.coverImageUrl or "https://www.kaggle.com/static/images/site-logo.png"
+        image_url = None  # image fetching disabled for now
         slug = slugify(title)[:60]
 
         results.append(

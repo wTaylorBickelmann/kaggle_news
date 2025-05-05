@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: “Supercharging a Calories‐Burnt Predictor with Mutual Information and Hyperboosting Ensembles” - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: “Supercharging a Calories‐Burnt Predictor with Mutual Information and Hyperboosting Ensembles”</h1>
+    <div class="meta">May 05, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+<figure>
+    <img src="/2025/05/05/s05e05-calorie-expenditure-prediction-ridge/cover.png" alt="Headline: “Supercharging a Calories‐Burnt Predictor with Mutual Information and Hyperboosting Ensembles”">
+</figure>
+
+
+<div class="content">
+    Headline: “Supercharging a Calories‐Burnt Predictor with Mutual Information and Hyperboosting Ensembles”<br><br>In a recent Kaggle notebook tackling the “Playground Series: Calories Burnt Prediction” challenge, an enterprising data scientist combined classic feature‐engineering insights with a battery of state‐of‐the‐art boosting models—hyper‐tuned via Optuna—into a lean, high-performance pipeline. The strategy’s standout twist? Tapping an external “original” calories dataset to validate and enrich feature importances before racing into a multi-model ensemble.<br><br>Feature Engineering and Data Enrichment  <br>Rather than blindly modeling the five provided features (Age, Weight, Height, Duration, Heart Rate, plus Sex), the author first log-transforms the target (Calories) to stabilize variance. They then import a separate, real-world calories-burn dataset. By computing mutual_information_regression on both the challenge’s training set and the external data, they rank each predictor by its raw information contribution. Side-by-side heat maps of Pearson correlations on both datasets further confirm which signals generalize and which might be overfit to the Playground set. This two-pronged, “mirror” feature‐importance check is an elegant guard against chasing spurious Kaggle noise.<br><br>Modeling Arsenal and Hyperparameter Tuning  <br>Armed with validated features, the notebook spins up four gradient-boosting regressors—HistGradientBoostingRegressor (sklearn), LightGBM, CatBoost, XGBoost—plus a Ridge baseline. Crucially, Optuna drives 250 cross-validated trials that yield some eyebrow-raising tunes (e.g. max_depth=59, nearly 4,500 tree iterations in HistGB; colsample_bytree at 0.82 and reg_alpha ~2 in LGBM). Early stopping and log_evaluation callbacks throttle runaway overfitting, while a 5-fold KFold split preserves robust RMSE scoring.<br><br>Ensembling via Koolbox.Trainer  <br>Rather than hand-roll stacking, the author leverages the emerging “koolbox” Trainer framework to orchestrate model training, blending predictions into a final submission. This abstraction not only standardizes folds, callbacks, and hyperparam checkpoints (via joblib and JSON artifacts) but also eases swapping in new learners or ensembling strategies.<br><br>Results and Takeaways  <br>The notebook reports a top‐of‐leaderboard submission with impressively low RMSE—proof that combining external data for feature‐importance validation, rigorous mutual‐information checks, and a hyperboost ensemble can leapfrog simpler single‐model approaches. Its most interesting takeaway: in small or noisy Kaggle playgrounds, cross-dataset mutual information and correlation audits act like a truth serum, ensuring your turbo-charged ensemble is built on real signal, not mirage.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/ravaghi/s05e05-calorie-expenditure-prediction-ridge">Read original article</a> &middot; <a href="https://www.kaggle.com/ravaghi/s05e05-calorie-expenditure-prediction-ridge">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>

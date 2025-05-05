@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Headline: Beating the Odds with Synthetic Data: A Machine-Learning Pipeline for Early Stroke Detection - The Daily Bin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin:0 auto; padding:20px; }
+        header { margin-bottom: 40px; }
+        header a.home { text-decoration:none; color:#666; font-size:0.9em; }
+        header h1 { margin:10px 0 5px 0; font-size:2em; }
+        .meta { color:#888; font-size:0.9em; margin-bottom:20px; }
+        figure { margin:0 0 30px 0; }
+        figure img { width:100%; border-radius:4px; }
+        .content { line-height:1.6; color:#333; }
+        .links { margin-top:40px; font-size:0.9em; }
+        .links a { color:#0077cc; text-decoration:none; }
+        footer { text-align:center; margin-top:60px; color:#888; font-size:0.8em; }
+    </style>
+</head>
+<body>
+<header>
+    <a class="home" href="/">← Back to front page</a>
+    <h1>Headline: Beating the Odds with Synthetic Data: A Machine-Learning Pipeline for Early Stroke Detection</h1>
+    <div class="meta">May 04, 2025 &middot; Source: kaggle.com</div>
+</header>
+
+
+<figure>
+    <img src="/2025/05/04/stroke-prediction-using-machine-learning/cover.png" alt="Headline: Beating the Odds with Synthetic Data: A Machine-Learning Pipeline for Early Stroke Detection">
+</figure>
+
+
+<div class="content">
+    Headline: Beating the Odds with Synthetic Data: A Machine-Learning Pipeline for Early Stroke Detection<br><br>In a recent Kaggle notebook titled “Early Stroke Risk Detection Using Health Data and Machine Learning Models,” a data-science team tackled one of healthcare’s toughest challenges—catching strokes before they happen—by engineering a streamlined pipeline that excels at spotting rare events. Their work combines careful feature preparation with an imbalanced-data strategy called SMOTE, and benchmarks two classic classifiers—Logistic Regression and Random Forest—against metrics that matter most in medicine: recall and F1-score.<br><br>Key steps in the modeling and feature-engineering strategy:<br><br>1. Data Cleaning and Pruning  <br>   • Missing Values: The body-mass-index (BMI) column, peppered with nulls, is imputed using the median rather than the mean, reducing skew from outliers.  <br>   • Rare Categories: Instead of one-hot encoding every label, the lone “Other” entry in the gender field is dropped, eliminating noise without bloating the feature space.  <br>   • Deduplication: Any exact duplicate patient records are removed, ensuring each sample remains unique.<br><br>2. ColumnTransformer for Mixed Data  <br>   • Numerical Features (age, BMI, average glucose): StandardScaler is applied after imputation to center and normalize ranges.  <br>   • Categorical Features (gender, ever_married, work_type, etc.): OneHotEncoder handles the remaining categories, creating dummies for downstream modeling.<br><br>3. Imbalance Handling with SMOTE Inside a Pipeline  <br>   • Unusual Twist: Rather than oversample at the raw-data stage, the team leverages imbalanced-learn’s Pipeline to inject SMOTE only into the training folds of cross-validation. This safeguards the test set from synthetic leakage, a pitfall in many imbalanced-data projects.  <br>   • Focus on Recall: GridSearchCV is explicitly tuned on recall and F1-score—prioritizing the detection of true stroke cases over overall accuracy.<br><br>4. Model Selection and Hyperparameter Tuning  <br>   • Logistic Regression: L2 penalty, class weighting, and varied C values are evaluated to balance interpretability with sensitivity.  <br>   • Random Forest: The number of trees, maximum depth, and minimum samples per leaf are swept in a stratified K-fold grid search.  <br><br>Standout findings and techniques:<br><br>- Recall Boost via SMOTE: Integrating SMOTE into cross-validation lifted the recall from the high-40% range (without balancing) to nearly 80% for Logistic Regression—critical when missing a stroke can cost lives.  <br>- Feature Importance Alignment: Random Forest’s top predictors—age, avg_glucose_level, and BMI—align with clinical intuition, validating the model’s reasoning.  <br>- Compact yet Transparent: By dropping a truly rare gender label instead of encoding it, the notebook keeps the feature matrix lean and the model explainable to clinicians.<br><br>Results:  <br>- Logistic Regression achieved a recall of ~0.80, F1-score of ~0.60, and ROC-AUC above 0.90.  <br>- Random Forest trailed modestly in recall (≈0.75) but matched ROC-AUC performance, offering a robust secondary option.  <br><br>This notebook demonstrates how careful preprocessing, judicious removal of noise, and the smart application of synthetic oversampling can transform a small, imbalanced medical dataset into a reliable early-warning system. It’s a template for data scientists aiming to build high-sensitivity models where every missed positive is one too many.
+</div>
+
+<div class="links">
+    <p><a href="https://www.kaggle.com/shahnawaj9/stroke-prediction-using-machine-learning">Read original article</a> &middot; <a href="https://www.kaggle.com/shahnawaj9/stroke-prediction-using-machine-learning">Open notebook on Kaggle</a></p>
+</div>
+
+<footer>
+    Generated automatically via git-scraper.
+</footer>
+</body>
+</html>
